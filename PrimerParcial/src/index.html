@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- La declaración doctype activa el modo estándar del navegador. -->
+
+
+
+
+<html lang="es" data-theme = "claro">
+<head>
+
+    <!-- Codificación de caracteres: UTF-8 permite mostrar tildes, ñ y símbolos correctamente. Debe estar al comienzo del head. -->
+
+    <meta charset="UTF-8">
+
+     <!-- Viewport: hace que el ancho de la página coincida con el ancho del
+         dispositivo. Sin esta línea, los móviles renderizan la página con un
+         ancho virtual de escritorio y la reducen, rompiendo el diseño responsive. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+        Metadatos para SEO: description suele mostrarse como resumen en los
+        resultados de búsqueda; robots indica a los buscadores si pueden
+        indexar la página y seguir sus enlaces.
+    -->
+
+    <!--
+        Título del documento: se ve en la pestaña, en favoritos y en los
+        resultados de búsqueda. No es lo mismo que el &lt;h1&gt; del body.
+    -->
+
+    <title>Parcial 1 - Head y variables CSS</title>
+
+     <!-- Hoja de estilos externa: rel indica el tipo de relación (hoja de estilos) 
+      y href la ubicación del archivo. HTML aporta la estructura; CSS, la presentación. -->
+
+    <link rel="stylesheet" href="./estilos/estilos.css">
+
+</head>
+
+<body>
+
+    <header class = "cabecera">
+
+        <h1>Head de HTML y variables CSS</h1>
+        <p>Aplicaciones Web - Parcial 1 - Tema: Numero 3</p>
+
+    </header>
+
+   <main class = "contenido">
+
+        <section class = "tarjeta">
+
+            <h2>1. Metadatos del head</h2>
+
+            <p>
+                Este documento declara en su <code>&lt;head&gt;</code> el charset, el viewport,
+                dos metadatos de SEO (description y robots), el título y el enlace a
+                <code>estilos.css</code>. No se dibujan en pantalla, pero determinan cómo se
+                interpreta y se muestra la página.
+            </p>
+            
+        </section>
+
+        <section class = "tarjeta">
+
+            <h2>2. Paleta y escala tipográficas</h2>
+
+            <p>
+                Todos los colores y tamaños de esta página provienen de variables declaradas
+                en <code>:root</code>.
+            </p>
+            <p class="texto-sm">Texto pequeño (--fs-sm)</p>
+            <p>Texto base (--fs-base)</p>
+            <p class="texto-lg">Texto grande (--fs-lg)</p>
+            <p class="texto-xl">Texto extra grande (--fs-xl)</p>
+            <button class="boton" type="button">Botón con variables</button>
+        
+        </section>
+
+        <section class = "tarjeta">
+
+            <h2>3. Herencia y alcance</h2>
+            <p>
+                Esta tarjeta usa las variables globales. El recuadro de abajo las redefine
+                solo para él: sus elementos internos heredan los nuevos valores sin tener
+                reglas propias.
+            </p>
+
+            <!-- Elemento que redefine variables en estilos.css (clase alcance-local). -->
+            <div class="alcance-local">
+                <h3>Alcance local</h3>
+                <p>Mismo CSS, otro valor de --color-principal.</p>
+                <button class="boton" type="button">Botón con variable local</button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class = "pie">
+        <p>Roldan Lara Martina - Aplicaciones Web 1 - Parcial N.º 1</p>
+    </footer>
+
+</body>
+</html>

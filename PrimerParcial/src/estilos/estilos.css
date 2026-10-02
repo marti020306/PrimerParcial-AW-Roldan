@@ -1,0 +1,153 @@
+/* =====================================================================
+   estilos.css - Parcial 1 - Tema 3
+   Variables CSS (custom properties): paleta, escala tipográfica,
+   herencia, alcance (scope) y cambio de tema global.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. DECLARACIÓN DE VARIABLES GLOBALES
+   - Se declaran con el prefijo -- y distinguen mayúsculas de minúsculas.
+   - :root selecciona el elemento <html>. Las variables declaradas ahí
+     se HEREDAN a todo el documento (las custom properties se heredan
+     por defecto), por eso quedan disponibles globalmente.
+   - Estos valores son el tema CLARO (el predeterminado).
+   --------------------------------------------------------------------- */
+
+:root
+{
+     /* Paleta de colores */
+    --color-principal:       #1d4ed8;
+    --color-sobre-principal: #ffffff;  /* texto sobre el color principal */
+    --color-fondo:           #f3f4f6;
+    --color-superficie:      #ffffff;
+    --color-texto:           #1f2937;
+    --color-borde:           #d1d5db;
+
+     /* Escala tipográfica (de menor a mayor) */
+    --fs-sm:   0.875rem;
+    --fs-base: 1rem;
+    --fs-lg:   1.25rem;
+    --fs-xl:   1.5rem;
+    --fs-2xl:  2rem;
+ 
+    /* Espaciados */
+    --espacio-sm: 0.5rem;
+    --espacio-md: 1rem;
+    --espacio-lg: 2rem;
+
+}
+
+/* ---------------------------------------------------------------------
+   2. CAMBIO DE TEMA GLOBAL
+   Cuando <html> tiene data-theme="oscuro", esta regla redefine SOLO las
+   variables de color. Ninguna regla de componente se modifica: al cambiar
+   el valor de las variables, todos los elementos que usan var() se
+   actualizan solos.
+   Especificidad: :root (0,1,0) + [atributo] (0,1,0) = (0,2,0), mayor que
+   la regla anterior (0,1,0), por lo que gana sin importar el orden.
+   --------------------------------------------------------------------- */
+
+:root[data-theme="oscuro"]
+{
+    --color-principal:       #60a5fa;
+    --color-sobre-principal: #111827;
+    --color-fondo:           #111827;
+    --color-superficie:      #1f2937;
+    --color-texto:           #f3f4f6;
+    --color-borde:           #374151;
+}
+
+/* ---------------------------------------------------------------------
+   3. USO DE LAS VARIABLES: función var()
+   var(--nombre) devuelve el valor de la variable en ese elemento.
+   --------------------------------------------------------------------- */
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+.cabecera {
+    padding: var(--espacio-lg) var(--espacio-md);
+    text-align: center;
+    color: var(--color-sobre-principal);
+    background-color: var(--color-principal);
+}
+
+.cabecera h1 {
+    margin: 0;
+    font-size: var(--fs-2xl);
+}
+
+.contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--espacio-lg) var(--espacio-md);
+}
+ 
+.tarjeta {
+    margin-bottom: var(--espacio-md);
+    padding: var(--espacio-md);
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-left: 6px solid var(--color-principal);
+}
+
+.tarjeta h2 {
+    margin-top: 0;
+    font-size: var(--fs-xl);
+    color: var(--color-principal);
+}
+ 
+.boton {
+    padding: var(--espacio-sm) var(--espacio-md);
+    font-size: var(--fs-base);
+    color: var(--color-sobre-principal);
+    background-color: var(--color-principal);
+    border: none;
+    cursor: pointer;
+}
+
+.pie {
+    padding: var(--espacio-md);
+    text-align: center;
+    font-size: var(--fs-sm);
+    border-top: 1px solid var(--color-borde);
+}
+
+/* ---------------------------------------------------------------------
+   4. ESCALA TIPOGRÁFICA APLICADA
+   --------------------------------------------------------------------- */
+.texto-sm { font-size: var(--fs-sm); }
+.texto-lg { font-size: var(--fs-lg); }
+.texto-xl { font-size: var(--fs-xl); font-weight: bold; }
+ 
+ 
+/* ---------------------------------------------------------------------
+   5. ALCANCE (SCOPE) LOCAL Y HERENCIA
+   Al redefinir variables en .alcance-local, el nuevo valor solo existe
+   en ese elemento y en sus DESCENDIENTES (h3, p, botón), que lo heredan
+   sin reglas propias. El resto de la página sigue usando el valor global
+   de :root. Funciona igual en el tema claro y en el oscuro.
+   --------------------------------------------------------------------- */
+
+.alcance-local {
+    --color-principal:       #c2410c;
+    --color-sobre-principal: #ffffff;
+ 
+    padding: var(--espacio-md);
+    border: 2px dashed var(--color-principal);
+}
+ 
+.alcance-local h3 {
+    margin-top: 0;
+    color: var(--color-principal);
+}
+
+
+
+
